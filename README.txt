@@ -29,7 +29,7 @@ eg.
 
 `java treequery tree.128 "1001/01/2018 06:00:00 AM"`
 
-`java treequery tree-partial.128 "1001/01/2018 06:00:00 AM"`
+`java treequery tree-partial.128 "506/03/2012 10:00:00 AM"`
 
 `java treequery tree.128 "1001/01/2018 06:00:00 AM" "1001/01/2018 06:00:00 PM"`
 

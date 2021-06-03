@@ -11,37 +11,38 @@ public class treequery{
     int nType;
     treefetch tff;
     int nodeExplored;
+    String filename;
 
-    public treequery(){
+    public treequery(String fn){
         keysLong = new ArrayList<Long>();
         pointersLong = new ArrayList<Long>();
         pointersString = new ArrayList<String>();
         nType = -1;
-        tff = new treefetch();
+        tff = new treefetch(fn);
         nodeExplored = 0;
     }
     public static void main(String[] args) {
 
-        if (args.length != 1 && args.length != 2 ){
-            System.out.print("Please enter one (for equality) or two (for range) SDTName fields as arguments for querying.");
+        if (args.length != 2 && args.length != 3 ){
+            System.out.print("Please enter the index file name, followed by one (for equality) or two (for range) SDTName fields as arguments for querying.");
             return;
         }
-        treefetch tf = new treefetch();
-        treequery q = new treequery();
+        treefetch tf = new treefetch(args[0]);
+        treequery q = new treequery(args[0]);
 
         String strSearchKey = "102018010106";
 
         int queryType = args.length;
 
-        if (queryType == 2){
-            q.rangeSearch(q.convertSDTStringtoLong(args[0]),q.convertSDTStringtoLong(args[1]));
+        if (queryType == 3){
+            q.rangeSearch(q.convertSDTStringtoLong(args[1]),q.convertSDTStringtoLong(args[2]));
 
 
             
-        } else if (queryType == 1) {
+        } else if (queryType == 2) {
             long startTime = System.nanoTime();
             // Range Search
-            Long searchKey = q.convertSDTStringtoLong(args[0]);
+            Long searchKey = q.convertSDTStringtoLong(args[1]);
             q.search(searchKey);
 
             for (int i=0; i<q.keysLong.size();i++){

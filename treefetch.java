@@ -14,6 +14,11 @@ public class treefetch {
 
     private int pageNo;
     private int recordOffset;
+    private String filename;
+
+    public treefetch(String fn){
+        filename = fn;
+    }
 
     public String fetch(long order) throws IOException {
         String record = "";
@@ -21,7 +26,7 @@ public class treefetch {
         int pageSize = 128;
         
         // Data file
-        String datafile = "tree." + pageSize;
+        String datafile = filename;
         
         // For Performance Measurement.
         long startTime = 0;
@@ -98,7 +103,7 @@ public class treefetch {
         int pageSize = 128;
         
         // Data file
-        String datafile = "tree." + pageSize;
+        String datafile = filename;
         
         // For Performance Measurement.
         long startTime = 0;
@@ -218,9 +223,7 @@ public class treefetch {
         return record;
     }
 
-    public treefetch(){
-        
-    }
+ 
 
     public static void main(String[] args) throws IOException {
 

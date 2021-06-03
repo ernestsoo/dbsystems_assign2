@@ -22,7 +22,8 @@ public class TreeWriter{
         // number of data file arguments.
         //String datafile = args[constants.DATAFILE_ARG];
 
-        String outputFileName = "tree."+pageSize;
+        //String outputFileName = "tree."+pageSize;
+        String outputFileName = "tree-partial."+pageSize;
         int numRecordsLoaded = 0;
         int numberOfPagesUsed = 0;
         long startTime = 0;

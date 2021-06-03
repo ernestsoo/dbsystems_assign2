@@ -36,6 +36,8 @@ public class treeload {
         int prev =-1;
         
         ArrayList<Integer> arr= new ArrayList<Integer>();
+
+        int partialLoad = 500000;
         
         try {
             inStream = new FileInputStream(datafile);
@@ -45,9 +47,9 @@ public class treeload {
             byte[] sdtnameBytes = new byte[numBytesInSdtnameField];
 
             bpt = new BPlusTree();
-            //int noRec = 0;
+            int noRec = 0;
             // until the end of the binary file is reached
-            while ((numBytesRead = inStream.read(page)) != -1) {
+            while ((numBytesRead = inStream.read(page)) != -1 && noRec < partialLoad) {
                 // Process each record in page
                 for (int i = 0; i < numRecordsPerPage; i++) {
 
@@ -101,7 +103,7 @@ public class treeload {
                             System.out.println("Its here");
                         }
 
-                        //noRec++;
+                        noRec++;
                         bpt.insertTuple(Long.valueOf(longIndex), String.valueOf(pageNo) + "/" + String.valueOf(i));
                     }
 

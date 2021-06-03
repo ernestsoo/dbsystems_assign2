@@ -1,0 +1,8 @@
+* f888cad : Update README.md
+* cefc49a : Update README.md
+* a0fdfef : Added README.md
+* df91987 : Remove hard-coded querying path
+* 021b4cd : Added partial tree load
+* f8788c0 : Added unclustered B+ tree index implementation
+* 427f988 : Implement heap fetch file to retrieve record from specific page.
+* c3bbda5 : Add heap file solution from assignment 1

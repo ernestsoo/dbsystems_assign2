@@ -19,7 +19,6 @@
 #### Querying from index file
 
 `java treequery <INDEX FILE> <SDTNAME>`
-
 <br/>
 
 `java treequery <INDEX FILE> <SDTNAME – LOWER BOUND> <SDTNAME – UPPER BOUND>`

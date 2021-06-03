@@ -39,6 +39,23 @@ public class constants{
     public static final int COUNTS_POS = 9;
     public static final int MILLISECONDS_PER_SECOND = 1000000;
 
+
+    // binary tree constants
+    public static final int KEYS_POS = 0;
+    public static final int CHILDREN_POS = 1;
+
+    public static final int KEYS_SIZE = 64;
+    public static final int CHILDREN_SIZE = 64;
+
+    public static final int TOTAL_SIZE_BPLUS = KEYS_SIZE + CHILDREN_SIZE;
+
+    public static final int CHILDREN_OFFSET = KEYS_SIZE;
+
+
+
+
+
+    // Heap file constants
     public static final int ID_OFFSET =   STD_NAME_SIZE;
 
     public static final int DATE_OFFSET =   STD_NAME_SIZE +

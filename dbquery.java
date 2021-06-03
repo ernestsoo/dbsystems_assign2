@@ -104,11 +104,18 @@ public class dbquery {
                                 + "," + ByteBuffer.wrap(sensorIdBytes).getInt() + "," +
                                 new String(sensorNameBytes).trim() + "," + ByteBuffer.wrap(countsBytes).getInt();
                         System.out.println(record);
+                        
+                        finishTime = System.nanoTime();
+                        
+                        long timeInMilliseconds = (finishTime - startTime)/constants.MILLISECONDS_PER_SECOND;
+        System.out.println("\nTime taken: " + timeInMilliseconds + " ms");
+			         
+                        return;
                     }
                 }
             }
 
-            finishTime = System.nanoTime();
+            
         }
         catch (FileNotFoundException e) {
             System.err.println("File not found " + e.getMessage());
@@ -123,7 +130,6 @@ public class dbquery {
             }
         }
 
-        long timeInMilliseconds = (finishTime - startTime)/constants.MILLISECONDS_PER_SECOND;
-        System.out.println("Time taken: " + timeInMilliseconds + " ms");
+        
     }
 }

@@ -6,12 +6,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class heapfetch {
-    public static void main(String[] args) throws IOException {
 
-        // Use pointers of un-clustered b+ tree index.
-        int pageNo = 1;
-        int recordOffset = 0;
-        
+    private int pageNo;
+    private int recordOffset;
+
+    public heapfetch(int pageNo, int recordOffset) throws IOException{
+        this.pageNo = pageNo;
+        this.recordOffset = recordOffset;
+
         // Page Size
         int pageSize = 4096;
         
@@ -36,7 +38,6 @@ public class heapfetch {
         FileInputStream inStream = null;
         
         try {
-            // Fetch record(s):
             inStream = new FileInputStream(datafile);
             int numBytesRead = 0;
             startTime = System.nanoTime();
@@ -55,13 +56,14 @@ public class heapfetch {
             byte[] sensorNameBytes = new byte[constants.SENSORNAME_SIZE];
             byte[] countsBytes = new byte[constants.COUNTS_SIZE];
             
+
             
             // Skip in stream to read a specific page. Avoid iterating through every single page for performance.
-            inStream.skip(pageNo * pageSize);
+            inStream.skip(this.pageNo * pageSize);
             
             numBytesRead = inStream.read(page);
             
-            int i = recordOffset;
+            int i = this.recordOffset;
             
             // Copy record's SdtName (field is located at multiples of the total record byte length)
             System.arraycopy(page, (i*numBytesInOneRecord), sdtnameBytes, 0, numBytesInSdtnameField);
@@ -127,7 +129,12 @@ public class heapfetch {
         
         // Calculate time taken for accessing data at a specifice page + offset.
         long timeInMilliseconds = (finishTime - startTime)/constants.MILLISECONDS_PER_SECOND;
-        System.out.println("Time taken: " + timeInMilliseconds + " ms");
+        //System.out.println("Time taken to fetch from heap: " + timeInMilliseconds + " ms");
+        
+    }
+    public static void main(String[] args) throws IOException {
+
+        heapfetch heap = new heapfetch(5644,17);
         
     }
     
